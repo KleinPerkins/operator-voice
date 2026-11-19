@@ -1,0 +1,396 @@
+{
+  "band_separation_evidence": {
+    "argument_flow_ratio": {
+      "qualifies": 1.0,
+      "separation": 1.0,
+      "stable_cv": 0.0
+    },
+    "burstiness_sentence_length": {
+      "qualifies": 1.0,
+      "separation": 0.6579600855338416,
+      "stable_cv": 0.12023227591052946
+    },
+    "lexical_entropy": {
+      "qualifies": 0.0,
+      "separation": 0.14853807746749506,
+      "stable_cv": 0.015852526320490862
+    },
+    "micro_rhythm_rate": {
+      "qualifies": 1.0,
+      "separation": 1.0,
+      "stable_cv": 0.0
+    },
+    "specificity_ratio": {
+      "qualifies": 1.0,
+      "separation": 0.6240601503759399,
+      "stable_cv": 0.2759112365647517
+    }
+  },
+  "calibrated_bands": {
+    "argument_flow_ratio": {
+      "basis": "calibration-manifest/v2 corpora/v2",
+      "provenance": "calibrated",
+      "thresholds": [
+        [
+          0.0,
+          "high"
+        ]
+      ]
+    },
+    "burstiness_sentence_length": {
+      "basis": "calibration-manifest/v2 corpora/v2",
+      "provenance": "calibrated",
+      "thresholds": [
+        [
+          -0.605933,
+          "high"
+        ],
+        [
+          -0.643688,
+          "medium"
+        ]
+      ]
+    },
+    "micro_rhythm_rate": {
+      "basis": "calibration-manifest/v2 corpora/v2",
+      "provenance": "calibrated",
+      "thresholds": [
+        [
+          0.0,
+          "high"
+        ]
+      ]
+    },
+    "specificity_ratio": {
+      "basis": "calibration-manifest/v2 corpora/v2",
+      "provenance": "calibrated",
+      "thresholds": [
+        [
+          3.009557,
+          "high"
+        ],
+        [
+          2.7,
+          "medium"
+        ],
+        [
+          2.390443,
+          "low"
+        ]
+      ]
+    }
+  },
+  "corpus_manifest_version": "corpora/v2",
+  "external_documents_contributing": 0,
+  "external_documents_seen": 2,
+  "feedback_effect": {
+    "post_feedback_correction_rate": 0.0,
+    "pre_feedback_correction_rate": 1.0,
+    "scenarios": 3.0
+  },
+  "function_word_reference": {
+    "fw_a_rate": [
+      2.2272295327215237,
+      2.055069613713688
+    ],
+    "fw_although_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_an_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_and_rate": [
+      1.5647944595313015,
+      1.74144084922445
+    ],
+    "fw_as_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_at_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_because_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_but_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_by_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_for_rate": [
+      1.0334281650071122,
+      1.6896766534792835
+    ],
+    "fw_furthermore_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_however_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_if_rate": [
+      0.43478260869565216,
+      1.3043478260869565
+    ],
+    "fw_in_rate": [
+      0.505050505050505,
+      1.016394535227177
+    ],
+    "fw_moreover_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_nor_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_of_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_on_rate": [
+      1.6930264985184895,
+      2.1689854036708947
+    ],
+    "fw_or_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_since_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_so_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_that_rate": [
+      1.4786967418546364,
+      1.9322641872076574
+    ],
+    "fw_the_rate": [
+      8.668073657776175,
+      3.7226224240108485
+    ],
+    "fw_therefore_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_these_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_this_rate": [
+      0.9903381642512077,
+      1.9990020614686552
+    ],
+    "fw_those_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_though_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_to_rate": [
+      3.345545477124424,
+      2.3298531929268584
+    ],
+    "fw_unless_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_while_rate": [
+      0.0,
+      0.0
+    ],
+    "fw_with_rate": [
+      0.4904306220095694,
+      0.9841379508170642
+    ],
+    "fw_yet_rate": [
+      0.0,
+      0.0
+    ]
+  },
+  "manifest_digest": "a52ac2393799893d9b289596f9de777f78c1893c8f9d75cca5f2400d4d33f3f8",
+  "manifest_version": "calibration-manifest/v2",
+  "per_corpus_stats": {
+    "external_reference_only": {
+      "argument_flow_ratio": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 2.0,
+        "stdev": 0.0
+      },
+      "burstiness_sentence_length": {
+        "cv": 0.11366283807760771,
+        "mean": -0.5960971818356202,
+        "n": 2.0,
+        "stdev": 0.06775409745750038
+      },
+      "function_word_divergence": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 2.0,
+        "stdev": 0.0
+      },
+      "lexical_entropy": {
+        "cv": 0.0042959082737886655,
+        "mean": 0.9525422044063951,
+        "n": 2.0,
+        "stdev": 0.0040920339370423275
+      },
+      "micro_rhythm_rate": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 2.0,
+        "stdev": 0.0
+      },
+      "specificity_ratio": {
+        "cv": 0.3333333333333333,
+        "mean": 1.5,
+        "n": 2.0,
+        "stdev": 0.5
+      }
+    },
+    "operator_noisy": {
+      "argument_flow_ratio": {
+        "cv": 1.7320508075688772,
+        "mean": 0.25,
+        "n": 4.0,
+        "stdev": 0.4330127018922193
+      },
+      "burstiness_sentence_length": {
+        "cv": 1.7320508075688772,
+        "mean": -0.13279381084253947,
+        "n": 4.0,
+        "stdev": 0.2300056273099692
+      },
+      "function_word_divergence": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 4.0,
+        "stdev": 0.0
+      },
+      "lexical_entropy": {
+        "cv": 0.5779001055663301,
+        "mean": 0.7089522256685595,
+        "n": 4.0,
+        "stdev": 0.40970356605534525
+      },
+      "micro_rhythm_rate": {
+        "cv": 1.051907256244411,
+        "mean": 406.25,
+        "n": 4.0,
+        "stdev": 427.337322849292
+      },
+      "specificity_ratio": {
+        "cv": 1.3114877048604001,
+        "mean": 0.625,
+        "n": 4.0,
+        "stdev": 0.81967981553775
+      }
+    },
+    "operator_stable_email": {
+      "argument_flow_ratio": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 5.0,
+        "stdev": 0.0
+      },
+      "burstiness_sentence_length": {
+        "cv": 0.09522165102846668,
+        "mean": -0.7189664882847003,
+        "n": 5.0,
+        "stdev": 0.06846117604860791
+      },
+      "function_word_divergence": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 5.0,
+        "stdev": 0.0
+      },
+      "lexical_entropy": {
+        "cv": 0.02061723848321567,
+        "mean": 0.921577270241675,
+        "n": 5.0,
+        "stdev": 0.01900037836128351
+      },
+      "micro_rhythm_rate": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 5.0,
+        "stdev": 0.0
+      },
+      "specificity_ratio": {
+        "cv": 0.13608276348795434,
+        "mean": 3.6,
+        "n": 5.0,
+        "stdev": 0.4898979485566356
+      }
+    },
+    "operator_stable_slack": {
+      "argument_flow_ratio": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 5.0,
+        "stdev": 0.0
+      },
+      "burstiness_sentence_length": {
+        "cv": 0.14524290079259222,
+        "mean": -0.5684086318178102,
+        "n": 5.0,
+        "stdev": 0.08255731852076728
+      },
+      "function_word_divergence": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 5.0,
+        "stdev": 0.0
+      },
+      "lexical_entropy": {
+        "cv": 0.011087814157766057,
+        "mean": 0.9910358595711486,
+        "n": 5.0,
+        "stdev": 0.010988421434606835
+      },
+      "micro_rhythm_rate": {
+        "cv": 0.0,
+        "mean": 0.0,
+        "n": 5.0,
+        "stdev": 0.0
+      },
+      "specificity_ratio": {
+        "cv": 0.41573970964154905,
+        "mean": 1.8,
+        "n": 5.0,
+        "stdev": 0.7483314773547883
+      }
+    }
+  },
+  "promotion": {
+    "noisy": {
+      "operator_noisy": "OBSERVED"
+    },
+    "stable": {
+      "operator_stable_email": "SUPPORTED",
+      "operator_stable_slack": "SUPPORTED"
+    }
+  },
+  "promotion_thresholds": {
+    "max_coefficient_of_variation": 0.65,
+    "min_documents_for_observed": 1,
+    "min_documents_for_supported": 3,
+    "min_sources_for_supported": 1
+  }
+}

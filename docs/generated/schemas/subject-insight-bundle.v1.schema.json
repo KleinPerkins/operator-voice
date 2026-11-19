@@ -1,0 +1,12 @@
+{
+  "required": [
+    "bundle_id",
+    "expires_at",
+    "observations",
+    "purpose",
+    "schema",
+    "subject_id",
+    "warnings"
+  ],
+  "schema": "subject-insight-bundle/v1"
+}

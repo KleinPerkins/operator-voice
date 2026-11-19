@@ -1,0 +1,33 @@
+Operator Voice Toolkit (OVT) — third-party provenance notice
+==============================================================
+
+This project's design was informed by a forensic audit of three open-source repositories
+(see `_ops/plans/operator-voice-toolkit-forensic-audit.md` in the `KleinPerkins/dev` workspace,
+and `docs/audit-provenance.md` in this repo for the in-repo copy of the take/reject decisions):
+
+- **MYNAH** — context taxonomy and context-scoped quirks concepts (license per its own repo).
+- **write-like-me** (MIT) — role-based export parsing, Tier-1 stylometry, stated-over-measured
+  precedence, and held-out verification concepts.
+- **voice-analyser-mcp** (Apache-2.0) — MCP shape and burstiness/clustering/entropy/micro-rhythm/
+  argument-flow statistical concepts.
+
+**Provenance discipline:** every module in `src/operator_voice/kernel/` that implements a
+technique the audit attributes to one of these repositories is independently re-implemented from
+the *described statistical/architectural concept* (e.g. "burstiness," "MATTR," "role-based export
+parsing"), not by copying source lines. Each such module's docstring cites the audit section that
+justified reuse of the concept (audit §4, §6).
+
+**If this ever changes** — if a future change copies or directly adapts actual source code from
+voice-analyser-mcp (Apache-2.0) or write-like-me (MIT) rather than re-implementing the underlying
+concept — the change MUST, before merge:
+
+1. bundle the upstream LICENSE text for that dependency in this repository, and
+2. add a prominent per-file "adapted from `<repo>` (`<license>`)" change notice at the top of
+   every modified/ported file,
+
+per the build plan's audit §4(a)/(b) obligation. As of this NOTICE's last review, no such copying
+has occurred; §4(a)/(b) obligations are therefore not yet triggered, but this file exists so the
+obligation is never missed if that changes.
+
+All detection-evasion guidance from voice-analyser-mcp (audit §4.5) is explicitly excluded from
+this project regardless of license — see build plan §3.1 and Decision D3.

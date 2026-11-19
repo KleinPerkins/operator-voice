@@ -1,0 +1,14 @@
+# BEGIN kleinperkins runnerless PR automation v3
+/.github/ @KleinPerkins
+/CODEOWNERS @KleinPerkins
+/_ops/ @KleinPerkins
+# END kleinperkins runnerless PR automation v3
+
+# Successor CI and account-bound delivery policy
+/AGENTS.md @KleinPerkins
+/scripts/verify.py @KleinPerkins
+/scripts/local_review.py @KleinPerkins
+/scripts/create_review_pr.py @KleinPerkins
+/scripts/reviewer_app.py @KleinPerkins
+/tests/delivery/ @KleinPerkins
+/docs/ci-delivery.md @KleinPerkins

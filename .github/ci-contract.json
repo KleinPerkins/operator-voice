@@ -1,0 +1,101 @@
+{
+  "schema": "clean-successor-ci-contract/v1",
+  "repository": "KleinPerkins/operator-voice",
+  "repository_id": 1460922064,
+  "shards": {
+    "unit": [
+      [
+        "-m",
+        "pytest",
+        "-q",
+        "--strict-markers",
+        "tests/unit",
+        "-m",
+        "not keychain and not e2e"
+      ]
+    ],
+    "integration": [
+      [
+        "-m",
+        "pytest",
+        "-q",
+        "--strict-markers",
+        "tests/integration",
+        "-m",
+        "not keychain and not e2e"
+      ]
+    ],
+    "contracts": [
+      [
+        "-m",
+        "pytest",
+        "-q",
+        "--strict-markers",
+        "tests/contract",
+        "tests/property",
+        "tests/security",
+        "-m",
+        "not keychain and not e2e"
+      ],
+      [
+        "-I",
+        "-B",
+        "tests/run_runnerless_checks.py"
+      ]
+    ],
+    "evaluation": [
+      [
+        "-m",
+        "pytest",
+        "-q",
+        "--strict-markers",
+        "tests/eval",
+        "-m",
+        "not keychain and not e2e"
+      ]
+    ],
+    "native": [
+      [
+        "-m",
+        "pytest",
+        "-q",
+        "--strict-markers",
+        "tests",
+        "-m",
+        "keychain or e2e"
+      ]
+    ],
+    "delivery": [
+      [
+        "-I",
+        "-B",
+        "tests/delivery/test_local_review.py"
+      ],
+      [
+        "-I",
+        "-B",
+        "tests/delivery/test_create_review_pr.py"
+      ],
+      [
+        "-I",
+        "-B",
+        "tests/delivery/test_reviewer_app.py"
+      ],
+      [
+        "-I",
+        "-B",
+        "tests/delivery/test_ci.py"
+      ]
+    ]
+  },
+  "required_jobs": [
+    "unit",
+    "integration",
+    "contracts",
+    "evaluation",
+    "native",
+    "delivery",
+    "ci-required"
+  ],
+  "activation": "prepared_only; review/account/App/admission/hosted qualification pending"
+}

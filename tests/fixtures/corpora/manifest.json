@@ -1,0 +1,54 @@
+{
+  "corpus_manifest_version": "corpora/v2",
+  "description": "Synthetic, adversarial-free operator-voice fixture corpora for M2 calibration (build plan D2 / §13 M2.7). NOT real operator text: every document is hand-authored synthetic prose written to exhibit a known, deterministic style so calibration outputs are reproducible. `label` records the intended ground truth: `stable` corpora are internally consistent (low variance -> should calibrate to SUPPORTED under the preregistered manifest); `noisy` corpora vary wildly (high variance -> must remain OBSERVED). `operator` corpora feed the operator profile; the `external` corpus exists only to prove EXTERNAL text is calibration-excluded.",
+  "corpora": [
+    {
+      "corpus_id": "operator_stable_slack",
+      "label": "stable",
+      "subject_kind": "OPERATOR",
+      "context": {"channel": "slack", "audience": "peer", "purpose": "update", "language": "en", "output_type": "message"},
+      "documents": [
+        {"document_id": "slk_1", "source_id": "src_slack_a", "text": "Quick update: I shipped the smaller build first. Risk felt lower that way. We can iterate once we see real usage."},
+        {"document_id": "slk_2", "source_id": "src_slack_a", "text": "Heads up: I merged the fix this morning. It was a small change. Let me know if anything looks off on your end."},
+        {"document_id": "slk_3", "source_id": "src_slack_b", "text": "Status: I moved the flag to default-off. Felt safer for now. We can flip it after the review lands."},
+        {"document_id": "slk_4", "source_id": "src_slack_b", "text": "One more thing: I split the PR into two. Easier to review that way. Ping me when you get a sec."},
+        {"document_id": "slk_5", "source_id": "src_slack_a", "text": "Update: I rolled the change forward. Numbers look steady. We should be good to close this out today."}
+      ]
+    },
+    {
+      "corpus_id": "operator_stable_email",
+      "label": "stable",
+      "subject_kind": "OPERATOR",
+      "context": {"channel": "email", "audience": "manager", "purpose": "update", "language": "en", "output_type": "email"},
+      "documents": [
+        {"document_id": "eml_1", "source_id": "src_email_a", "text": "Hi team, I wanted to share a brief update on the migration effort. We completed the first phase on schedule, and the results are consistent with what we projected. I recommend proceeding to the second phase next week, assuming no regressions surface in review."},
+        {"document_id": "eml_2", "source_id": "src_email_a", "text": "Hello everyone, I am writing to summarize where the project stands. The core work is finished, and the remaining items are minor. I propose that we allocate a short buffer for validation before we consider the effort complete."},
+        {"document_id": "eml_3", "source_id": "src_email_b", "text": "Hi all, I would like to confirm the plan for the upcoming release. The dependencies are resolved, and the timeline remains realistic. I suggest we hold a brief checkpoint on Thursday to align on the final steps."},
+        {"document_id": "eml_4", "source_id": "src_email_b", "text": "Hi team, I am following up on the earlier thread. The analysis is complete, and the conclusions are stable across the samples we examined. I recommend that we document the decision and move ahead with the agreed approach."},
+        {"document_id": "eml_5", "source_id": "src_email_a", "text": "Hello, I wanted to provide a short status note before the weekend. The implementation is stable, and testing has been uneventful. I believe we are in a good position to close the milestone early next week."}
+      ]
+    },
+    {
+      "corpus_id": "operator_noisy",
+      "label": "noisy",
+      "subject_kind": "OPERATOR",
+      "context": {"channel": "slack", "audience": "peer", "purpose": "brainstorm", "language": "en", "output_type": "message"},
+      "documents": [
+        {"document_id": "noi_1", "source_id": "src_noisy", "text": "ok."},
+        {"document_id": "noi_2", "source_id": "src_noisy", "text": "So I was thinking, and this is a genuinely enormous, sprawling, meandering thought that keeps going and going without any real punctuation to slow it down because sometimes the ideas just pour out in one gigantic uninterrupted rush that never seems to reach a natural stopping point at all ever."},
+        {"document_id": "noi_3", "source_id": "src_noisy", "text": "Maybe? Not sure. Could work. Or not. Depends."},
+        {"document_id": "noi_4", "source_id": "src_noisy", "text": "HUGE NEWS everything changed today and nothing is the same and I have seventeen different ideas all at once and also we should probably rewrite the whole thing from scratch but also maybe not who knows honestly."}
+      ]
+    },
+    {
+      "corpus_id": "external_reference_only",
+      "label": "stable",
+      "subject_kind": "EXTERNAL",
+      "context": {"channel": "email", "audience": "peer", "purpose": "update", "language": "en", "output_type": "email"},
+      "documents": [
+        {"document_id": "ext_1", "source_id": "src_external", "text": "Hi, thanks for the note. I will review the document and send comments by tomorrow. Appreciate the quick turnaround on this."},
+        {"document_id": "ext_2", "source_id": "src_external", "text": "Hello, following up on our conversation. The proposal looks reasonable to me. Let us schedule time to discuss the open questions."}
+      ]
+    }
+  ]
+}

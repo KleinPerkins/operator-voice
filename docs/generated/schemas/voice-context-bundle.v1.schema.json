@@ -1,0 +1,19 @@
+{
+  "required": [
+    "abstained",
+    "actual_tokens",
+    "budget_tokens",
+    "bundle_id",
+    "confidence",
+    "consumer_id",
+    "generation_id",
+    "instructions",
+    "provenance_refs",
+    "ranked_facts",
+    "request_scope",
+    "schema",
+    "subject_id",
+    "warnings"
+  ],
+  "schema": "voice-context-bundle/v1"
+}

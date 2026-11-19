@@ -1,0 +1,283 @@
+{
+  "name": "CI",
+  "on": {
+    "pull_request": {
+      "types": [
+        "opened",
+        "reopened",
+        "synchronize",
+        "ready_for_review"
+      ]
+    },
+    "push": {
+      "branches": [
+        "main"
+      ]
+    },
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "ci-${{ github.event.pull_request.number || github.ref }}",
+    "cancel-in-progress": true
+  },
+  "jobs": {
+    "unit": {
+      "name": "unit",
+      "runs-on": "macos-15",
+      "timeout-minutes": 20,
+      "outputs": {
+        "receipt": "${{ steps.verify.outputs.receipt }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 2
+          }
+        },
+        {
+          "uses": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Install locked test dependencies",
+          "run": "python -m pip install uv==0.9.28\nuv sync --locked --extra dev"
+        },
+        {
+          "name": "Run unit",
+          "id": "verify",
+          "env": {
+            "CI_HEAD_SHA": "${{ github.event.pull_request.head.sha }}",
+            "CI_BASE_SHA": "${{ github.event.pull_request.base.sha }}"
+          },
+          "run": ".venv/bin/python -I -B scripts/verify.py shard --shard unit"
+        }
+      ]
+    },
+    "integration": {
+      "name": "integration",
+      "runs-on": "macos-15",
+      "timeout-minutes": 40,
+      "outputs": {
+        "receipt": "${{ steps.verify.outputs.receipt }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 2
+          }
+        },
+        {
+          "uses": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Install locked test dependencies",
+          "run": "python -m pip install uv==0.9.28\nuv sync --locked --extra dev"
+        },
+        {
+          "name": "Run integration",
+          "id": "verify",
+          "env": {
+            "CI_HEAD_SHA": "${{ github.event.pull_request.head.sha }}",
+            "CI_BASE_SHA": "${{ github.event.pull_request.base.sha }}"
+          },
+          "run": ".venv/bin/python -I -B scripts/verify.py shard --shard integration"
+        }
+      ]
+    },
+    "contracts": {
+      "name": "contracts",
+      "runs-on": "macos-15",
+      "timeout-minutes": 20,
+      "outputs": {
+        "receipt": "${{ steps.verify.outputs.receipt }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 2
+          }
+        },
+        {
+          "uses": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Install locked test dependencies",
+          "run": "python -m pip install uv==0.9.28\nuv sync --locked --extra dev"
+        },
+        {
+          "name": "Run contracts",
+          "id": "verify",
+          "env": {
+            "CI_HEAD_SHA": "${{ github.event.pull_request.head.sha }}",
+            "CI_BASE_SHA": "${{ github.event.pull_request.base.sha }}"
+          },
+          "run": ".venv/bin/python -I -B scripts/verify.py shard --shard contracts"
+        }
+      ]
+    },
+    "evaluation": {
+      "name": "evaluation",
+      "runs-on": "macos-15",
+      "timeout-minutes": 20,
+      "outputs": {
+        "receipt": "${{ steps.verify.outputs.receipt }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 2
+          }
+        },
+        {
+          "uses": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Install locked test dependencies",
+          "run": "python -m pip install uv==0.9.28\nuv sync --locked --extra dev"
+        },
+        {
+          "name": "Run evaluation",
+          "id": "verify",
+          "env": {
+            "CI_HEAD_SHA": "${{ github.event.pull_request.head.sha }}",
+            "CI_BASE_SHA": "${{ github.event.pull_request.base.sha }}"
+          },
+          "run": ".venv/bin/python -I -B scripts/verify.py shard --shard evaluation"
+        }
+      ]
+    },
+    "native": {
+      "name": "native",
+      "runs-on": "macos-15",
+      "timeout-minutes": 20,
+      "outputs": {
+        "receipt": "${{ steps.verify.outputs.receipt }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 2
+          }
+        },
+        {
+          "uses": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Install locked test dependencies",
+          "run": "python -m pip install uv==0.9.28\nuv sync --locked --extra dev"
+        },
+        {
+          "name": "Run native",
+          "id": "verify",
+          "env": {
+            "CI_HEAD_SHA": "${{ github.event.pull_request.head.sha }}",
+            "CI_BASE_SHA": "${{ github.event.pull_request.base.sha }}"
+          },
+          "run": ".venv/bin/python -I -B scripts/verify.py shard --shard native"
+        }
+      ]
+    },
+    "delivery": {
+      "name": "delivery",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 20,
+      "outputs": {
+        "receipt": "${{ steps.verify.outputs.receipt }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 2
+          }
+        },
+        {
+          "uses": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Install locked test dependencies",
+          "run": "python -m pip install uv==0.9.28\nuv sync --locked --extra dev"
+        },
+        {
+          "name": "Run delivery",
+          "id": "verify",
+          "env": {
+            "CI_HEAD_SHA": "${{ github.event.pull_request.head.sha }}",
+            "CI_BASE_SHA": "${{ github.event.pull_request.base.sha }}"
+          },
+          "run": ".venv/bin/python -I -B scripts/verify.py shard --shard delivery"
+        }
+      ]
+    },
+    "ci-required": {
+      "name": "ci-required",
+      "needs": [
+        "unit",
+        "integration",
+        "contracts",
+        "evaluation",
+        "native",
+        "delivery"
+      ],
+      "if": "${{ always() }}",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 5,
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 2
+          }
+        },
+        {
+          "name": "Require every exact-run shard",
+          "env": {
+            "CI_HEAD_SHA": "${{ github.event.pull_request.head.sha }}",
+            "CI_BASE_SHA": "${{ github.event.pull_request.base.sha }}",
+            "CI_NEEDS": "${{ toJSON(needs) }}"
+          },
+          "run": "python3 -I -B scripts/verify.py aggregate"
+        }
+      ]
+    }
+  }
+}

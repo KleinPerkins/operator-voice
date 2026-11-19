@@ -1,0 +1,107 @@
+{
+  "observed": {
+    "benchmark_version": "m1-benchmark/v1",
+    "observed_at": 1785422561.4995399,
+    "results": [
+      {
+        "context_get": {
+          "p50_ms": 16.28066600096645,
+          "p95_ms": 30.542291800520612,
+          "trials": 5
+        },
+        "context_tokens": 791,
+        "db_bytes": 4096,
+        "ingest": {
+          "p50_ms": 521.9869590000599,
+          "p95_ms": 535.1324415991257,
+          "trials": 5
+        },
+        "peak_memory_bytes": 35241984,
+        "rebuild": {
+          "p50_ms": 206.64625000063097,
+          "p95_ms": 218.43908360024216,
+          "trials": 5
+        },
+        "size": 10
+      },
+      {
+        "context_get": {
+          "p50_ms": 9.74720800149953,
+          "p95_ms": 104.69674140113055,
+          "trials": 5
+        },
+        "context_tokens": 794,
+        "db_bytes": 4198400,
+        "ingest": {
+          "p50_ms": 2482.5826669984963,
+          "p95_ms": 4040.9726416008198,
+          "trials": 5
+        },
+        "peak_memory_bytes": 38912000,
+        "rebuild": {
+          "p50_ms": 281.07954100050847,
+          "p95_ms": 1903.4950500004925,
+          "trials": 5
+        },
+        "size": 100
+      },
+      {
+        "context_get": {
+          "p50_ms": 36.4278330016532,
+          "p95_ms": 36.53868330111436,
+          "trials": 3
+        },
+        "context_tokens": 788,
+        "db_bytes": 39665664,
+        "ingest": {
+          "p50_ms": 8309.870207998756,
+          "p95_ms": 9058.483683901795,
+          "trials": 3
+        },
+        "peak_memory_bytes": 62636032,
+        "rebuild": {
+          "p50_ms": 2919.9175409994496,
+          "p95_ms": 2979.085454399683,
+          "trials": 3
+        },
+        "size": 1000
+      }
+    ]
+  },
+  "pinned_budget": {
+    "benchmark_version": "m1-benchmark/v1",
+    "by_size": {
+      "10": {
+        "context_get_p50_ms": 24.420999001449673,
+        "context_get_p95_ms": 45.813437700780916,
+        "db_bytes": 6144.0,
+        "ingest_p50_ms": 782.9804385000898,
+        "ingest_p95_ms": 802.6986623986886,
+        "peak_memory_bytes": 52862976.0,
+        "rebuild_p50_ms": 309.96937500094646,
+        "rebuild_p95_ms": 327.65862540036323
+      },
+      "100": {
+        "context_get_p50_ms": 14.620812002249295,
+        "context_get_p95_ms": 157.04511210169582,
+        "db_bytes": 6297600.0,
+        "ingest_p50_ms": 3723.8740004977444,
+        "ingest_p95_ms": 6061.45896240123,
+        "peak_memory_bytes": 58368000.0,
+        "rebuild_p50_ms": 421.6193115007627,
+        "rebuild_p95_ms": 2855.2425750007387
+      },
+      "1000": {
+        "context_get_p50_ms": 54.6417495024798,
+        "context_get_p95_ms": 54.80802495167154,
+        "db_bytes": 59498496.0,
+        "ingest_p50_ms": 12464.805311998134,
+        "ingest_p95_ms": 13587.725525852693,
+        "peak_memory_bytes": 93954048.0,
+        "rebuild_p50_ms": 4379.876311499174,
+        "rebuild_p95_ms": 4468.628181599524
+      }
+    },
+    "margin": 0.5
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "voice-context-bundle/v1",
+  "bundle_id": "bundle_frozen_v1_fixture",
+  "subject_id": "subj_operator_fixture",
+  "consumer_id": "template-framework",
+  "generation_id": "gen_fixture_0001",
+  "request_scope": {
+    "channel": "email",
+    "audience": "team",
+    "purpose": "update",
+    "language": "en",
+    "output_type": "text"
+  },
+  "ranked_facts": [
+    {
+      "facet": "register_tone",
+      "value": "warm-direct",
+      "state": "CONFIRMED",
+      "confidence": 0.92,
+      "scope": {
+        "channel": "email",
+        "audience": "team",
+        "purpose": "update",
+        "language": "en",
+        "output_type": "text"
+      },
+      "provenance_ids": ["prov_a1"]
+    },
+    {
+      "facet": "sentence_length",
+      "value": 14.0,
+      "state": "SUPPORTED",
+      "confidence": 0.71,
+      "scope": {
+        "channel": "general",
+        "audience": "general",
+        "purpose": "general",
+        "language": "en",
+        "output_type": "text"
+      },
+      "provenance_ids": ["prov_b2"]
+    },
+    {
+      "facet": "banned_phrase",
+      "value": "circle back",
+      "state": "CORRECTED",
+      "confidence": 1.0,
+      "scope": {
+        "channel": "general",
+        "audience": "general",
+        "purpose": "general",
+        "language": "en",
+        "output_type": "text"
+      },
+      "provenance_ids": ["prov_c3"]
+    }
+  ],
+  "instructions": {
+    "generative": "Write warmly and directly for a team update; keep sentences around 14 words.",
+    "corrective": "Never use the phrase 'circle back'."
+  },
+  "warnings": ["context_relaxation:purpose"],
+  "provenance_refs": ["prov_a1", "prov_b2", "prov_c3"],
+  "budget_tokens": 800,
+  "actual_tokens": 96,
+  "confidence": 0.84,
+  "abstained": false,
+  "created_at": 0.0
+}
