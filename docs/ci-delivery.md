@@ -23,3 +23,21 @@ admission remains an owner administrative operation. Keep its writer off until c
 read-only App readiness, actual current-PR receipt admission and owner-visible controls pass. Never
 manually merge, arm auto-merge or weaken controls. Publication/history exposure clearance is separate.
 The private profile repository, installed runtime and scheduled jobs are outside this source change.
+
+## Bootstrap checkpoint (2026-11-20 UTC)
+
+The initial WORK enrollment was admitted in [PR #1](https://github.com/KleinPerkins/operator-voice/pull/1)
+as `79ad6a7d3d3f90c48f26cd128ed430de477f4328`. Its tree matches the reviewed enrollment
+candidate. [Main CI run 44696766527, attempt 1](https://github.com/KleinPerkins/operator-voice/actions/runs/44696766527)
+passed all six shards and `ci-required`, including the hosted native checks.
+
+With the writer off, [read-only App qualification run 44697265318](https://github.com/KleinPerkins/operator-voice/actions/runs/44697265318)
+qualified that same main revision using App4217367 (`chaos-scheduler-automerge`), scoped to this
+repository. Both contributing rulesets reported `current_user_can_bypass=never` for the App;
+the qualification reported `mutated=false`. The App token could not enumerate bypass actors,
+so owner-visible ruleset inspection remains a separate activation check.
+
+This checkpoint establishes bootstrap admission, main CI and read-only App readiness. Ordinary
+delivery still requires a fresh same-WORK review, creation witness, unedited receipt and current
+head/base CI, followed by read-only receipt qualification before owner-controlled writer activation.
+An actual App-owned squash and passing merged-main CI are required to establish ordinary delivery.
