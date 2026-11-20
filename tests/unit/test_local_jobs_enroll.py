@@ -99,10 +99,13 @@ def test_ensure_repairs_when_already_registered(monkeypatch: pytest.MonkeyPatch,
     assert "OVT_CURATE_PER_SOURCE_LIMIT=250" in env_values
 
 
-def test_ensure_registers_when_missing(monkeypatch: pytest.MonkeyPatch):
+def test_ensure_registers_when_missing(monkeypatch: pytest.MonkeyPatch, tmp_path):
+    share = tmp_path / "share"
+    _seed_ovt_runtime(share)
+    monkeypatch.setenv("XDG_DATA_HOME", str(share))
+    monkeypatch.setattr(local_jobs_enroll, "_load_job_entry", lambda **_: None)
     monkeypatch.delenv("OVT_DISABLE_PASSIVE_CURATION_ENROLL", raising=False)
     monkeypatch.setattr(local_jobs_enroll, "resolve_local_jobs_sh", lambda: "/tmp/local-jobs.sh")
-    monkeypatch.setattr(local_jobs_enroll, "_job_registered", lambda **_: False)
 
     proc = MagicMock(returncode=0, stdout="", stderr="")
     monkeypatch.setattr(local_jobs_enroll, "_run_local_jobs", lambda *a, **k: proc)
@@ -114,10 +117,13 @@ def test_ensure_registers_when_missing(monkeypatch: pytest.MonkeyPatch):
     assert result["execution_mode"] == "on_demand"
 
 
-def test_ensure_surfaces_add_job_failure(monkeypatch: pytest.MonkeyPatch):
+def test_ensure_surfaces_add_job_failure(monkeypatch: pytest.MonkeyPatch, tmp_path):
+    share = tmp_path / "share"
+    _seed_ovt_runtime(share)
+    monkeypatch.setenv("XDG_DATA_HOME", str(share))
+    monkeypatch.setattr(local_jobs_enroll, "_load_job_entry", lambda **_: None)
     monkeypatch.delenv("OVT_DISABLE_PASSIVE_CURATION_ENROLL", raising=False)
     monkeypatch.setattr(local_jobs_enroll, "resolve_local_jobs_sh", lambda: "/tmp/local-jobs.sh")
-    monkeypatch.setattr(local_jobs_enroll, "_job_registered", lambda **_: False)
 
     proc = MagicMock(returncode=1, stdout="", stderr="instance already exists: operator-voice-curate")
     monkeypatch.setattr(local_jobs_enroll, "_run_local_jobs", lambda *a, **k: proc)
@@ -127,7 +133,11 @@ def test_ensure_surfaces_add_job_failure(monkeypatch: pytest.MonkeyPatch):
     assert "already exists" in result["detail"]
 
 
-def test_ensure_fails_actionably_when_local_jobs_python_unresolved(monkeypatch: pytest.MonkeyPatch):
+def test_ensure_fails_actionably_when_local_jobs_python_unresolved(monkeypatch: pytest.MonkeyPatch, tmp_path):
+    share = tmp_path / "share"
+    _seed_ovt_runtime(share)
+    monkeypatch.setenv("XDG_DATA_HOME", str(share))
+    monkeypatch.setattr(local_jobs_enroll, "_load_job_entry", lambda **_: None)
     monkeypatch.delenv("OVT_DISABLE_PASSIVE_CURATION_ENROLL", raising=False)
     monkeypatch.setattr(local_jobs_enroll, "resolve_local_jobs_sh", lambda: "/tmp/local-jobs.sh")
     monkeypatch.setattr(local_jobs_enroll, "resolve_local_jobs_python", lambda **_: None)
@@ -137,11 +147,13 @@ def test_ensure_fails_actionably_when_local_jobs_python_unresolved(monkeypatch: 
     assert "PyYAML" in result["detail"]
 
 
-def test_ensure_passes_resolved_python_to_local_jobs(monkeypatch: pytest.MonkeyPatch):
+def test_ensure_submits_planned_job_to_local_jobs(monkeypatch: pytest.MonkeyPatch, tmp_path):
+    share = tmp_path / "share"
+    _seed_ovt_runtime(share)
+    monkeypatch.setenv("XDG_DATA_HOME", str(share))
+    monkeypatch.setattr(local_jobs_enroll, "_load_job_entry", lambda **_: None)
     monkeypatch.delenv("OVT_DISABLE_PASSIVE_CURATION_ENROLL", raising=False)
     monkeypatch.setattr(local_jobs_enroll, "resolve_local_jobs_sh", lambda: "/tmp/local-jobs.sh")
-    monkeypatch.setattr(local_jobs_enroll, "_job_registered", lambda **_: False)
-    monkeypatch.setattr(local_jobs_enroll, "resolve_local_jobs_python", lambda **_: "/tmp/venv/bin/python")
 
     captured: dict[str, Any] = {}
 
