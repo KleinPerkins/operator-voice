@@ -42,4 +42,4 @@ originating account in the trusted-main policy. Bootstrap admission does not sup
 PR's review or receipt: capture those freshly against the current head, base and policy, and
 use the creation helper's account-bound witness. Preserve read-only receipt qualification before
 owner-controlled writer activation. Establish ordinary delivery only from an actual App-owned
-squash and passing CI on the merged revision.
+merge and passing CI on the merged revision.
